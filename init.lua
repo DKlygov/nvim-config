@@ -72,6 +72,9 @@ vim.keymap.set("n", "<leader>wk", "<C-w>l", { desc = "Navigate to top window" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })        
 vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })         
 
+-- Terminal
+vim.keymap.set("n", "<leader>it", ":Term<CR>", { desc = "Open integrated terminal", silent = true })
+
 -- Tabs
 vim.opt.showtabline = 2 -- Always show tab line
 vim.opt.tabline = '' -- Disable custom tabline (default UI)
@@ -151,14 +154,15 @@ vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from tag" })
 -- Commands
 local commandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
 
--- Delete buffers
+-- Delete terminal buffers after they close
 vim.api.nvim_create_autocmd("TermClose", {
-    group = commandGroup,
-    callback = function()
-        if vim.event.status == 0 then
-            vim.api.nvim_buf_delete(0, {})
-        end
-    end,
+  group = commandGroup,
+  callback = function(args)
+    local bufnr = args.buf
+    if vim.api.nvim_buf_is_valid(bufnr) then
+      vim.api.nvim_buf_delete(bufnr, { force = true })
+    end
+  end,
 })
 
 -- Resize
@@ -192,3 +196,11 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         })
     end,
 })
+
+
+vim.api.nvim_create_user_command("Term",
+    function()
+        vim.cmd("botright 10split | terminal")
+    end,
+{ desc = "Open terminal below with 10 lines height" })
+
