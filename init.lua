@@ -142,6 +142,12 @@ vim.opt.path:append("/Library/Developer/CommandLineTools/usr/include") -- Additi
 vim.opt.path:append("/usr/lib/gcc") -- GCC-specific headers
 vim.opt.path:append("/usr/lib/clang") -- Clang-specific headers
 
+-- Ctags
+vim.opt.tags:append("./.tags;/") -- Load Ctags dir
+vim.keymap.set("n", "<leader>gd", "<C-]>", { desc = "Go to definition (ctags)" })
+vim.keymap.set("n", "<leader>gD", ":tselect <C-r><C-w><CR>", { desc = "Tag select (multiple matches)" })
+vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from tag" })
+
 -- Commands
 local commandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
 
@@ -174,3 +180,15 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- Automatically regenerate ctags on file save
+vim.api.nvim_create_autocmd("BufWritePost", {
+    group = commandGroup,
+    callback = function(args)
+        local project_root = vim.fn.getcwd()
+        vim.fn.jobstart({ "ctags", "-f", ".tags" , "-R", "." }, {
+            cwd = project_root,
+            stdout_buffered = true,
+            stderr_buffered = true,
+        })
+    end,
+})
