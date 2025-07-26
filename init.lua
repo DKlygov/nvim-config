@@ -54,7 +54,7 @@ vim.opt.autowrite      = false -- Don’t auto-write files
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode with jk
 
 -- Buffers
-vim.keymap.set("n", "<leader>bc", ":vnew<CR>", { desc = "Create new empty buffer on the right" })
+vim.keymap.set("n", "<leader>bc", ":vnew<CR>", { desc = "Create new empty buffer on the left" })
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })              
 vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })                          
 vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })                  
