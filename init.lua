@@ -47,9 +47,6 @@ vim.opt.writebackup    = false -- Disable backup before writing file
 vim.opt.swapfile       = false -- Disable swap files
 vim.opt.undofile       = true -- Enable persistent undo
 vim.opt.undodir        = vim.fn.expand("~/.nvim/undodir") -- Directory to store undo files
-vim.opt.updatetime     = 300 -- Delay before triggering CursorHold
-vim.opt.timeoutlen     = 500 -- Mapped sequence timeout length
-vim.opt.ttimeoutlen    = 0 -- Timeout for key codes
 vim.opt.autoread       = true -- Auto reload file if changed outside
 vim.opt.autowrite      = false -- Don’t auto-write files
 
@@ -134,6 +131,10 @@ vim.opt.modifiable = true -- Allow buffer modification
 vim.opt.encoding = "UTF-8" -- Set encoding to UTF-8
 vim.opt.redrawtime = 10000 -- Increase redraw time for large files
 vim.opt.maxmempattern = 20000 -- Increase memory for pattern matching
+vim.opt.updatetime     = 300 -- Delay before triggering CursorHold
+vim.opt.timeoutlen     = 500 -- Mapped sequence timeout length
+vim.opt.ttimeoutlen    = 0 -- Timeout for key codes
+vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- Better completion menu
 
 -- Make instant search of standart C library headers
 -- so you can find: stdlib.h or any other library installed
