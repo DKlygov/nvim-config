@@ -59,7 +59,6 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode wit
 -- Buffers
 vim.keymap.set("n", "<leader>bc", ":vnew<CR>", { desc = "Create new empty buffer on the right" })
 vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })              
-vim.keymap.set("n", "<leader>qq", ":wa | bufdo bd! | qa<CR>", { desc = "Save all, close all, and exit" }) 
 vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })                          
 vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })                  
 
@@ -149,14 +148,21 @@ vim.opt.path:append("/usr/lib/clang") -- Clang-specific headers
 vim.opt.tags:append("./.tags;/") -- Load Ctags dir
 vim.keymap.set("n", "<leader>gd", "<C-]>", { desc = "Go to definition (ctags)" })
 vim.keymap.set("n", "<leader>gD", ":tselect <C-r><C-w><CR>", { desc = "Tag select (multiple matches)" })
-vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from tag" })
+vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from definition (ctags)" })
 
--- Commands
-local commandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
+-- Auto commands group 
+local autoCommandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
+
+-- Open integrated terminal below, with the size of 16 lines
+vim.api.nvim_create_user_command("Term",
+    function()
+        vim.cmd("botright 16split | terminal")
+    end,
+{ desc = "Open terminal below with 10 lines height" })
 
 -- Delete terminal buffers after they close
 vim.api.nvim_create_autocmd("TermClose", {
-  group = commandGroup,
+  group = autoCommandGroup,
   callback = function(args)
     local bufnr = args.buf
     if vim.api.nvim_buf_is_valid(bufnr) then
@@ -167,7 +173,7 @@ vim.api.nvim_create_autocmd("TermClose", {
 
 -- Resize
 vim.api.nvim_create_autocmd("VimResized", {
-    group = commandGroup,
+    group = autoCommandGroup,
     callback = function()
         vim.cmd("tabdo wincmd =")
     end,
@@ -175,7 +181,7 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 -- Create dirs
 vim.api.nvim_create_autocmd("BufWritePre", {
-    group = commandGroup,
+    group = autoCommandGroup,
     callback = function()
         local dir = vim.fn.expand("<afile>:p:h")
         if vim.fn.isdirectory(dir) == 0 then
@@ -186,7 +192,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 -- Automatically regenerate ctags on file save
 vim.api.nvim_create_autocmd("BufWritePost", {
-    group = commandGroup,
+    group = autoCommandGroup,
     callback = function(args)
         local project_root = vim.fn.getcwd()
         vim.fn.jobstart({ "ctags", "-f", ".tags" , "-R", "." }, {
@@ -196,11 +202,4 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         })
     end,
 })
-
--- Open integrated terminal below, with the size of 16 lines
-vim.api.nvim_create_user_command("Term",
-    function()
-        vim.cmd("botright 16split | terminal")
-    end,
-{ desc = "Open terminal below with 10 lines height" })
 
