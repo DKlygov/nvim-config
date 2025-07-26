@@ -197,10 +197,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     end,
 })
 
-
+-- Open integrated terminal below, with the size of 16 lines
 vim.api.nvim_create_user_command("Term",
     function()
-        vim.cmd("botright 10split | terminal")
+        vim.cmd("botright 16split | terminal")
     end,
 { desc = "Open terminal below with 10 lines height" })
 
