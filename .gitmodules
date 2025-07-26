@@ -1,4 +1,4 @@
 [submodule "pack/themes/start/nord.nvim"]
-	path = pack/themes/start/nord.nvim
+    path = pack/themes/start/nord.nvim
     url = https://github.com/shaunsingh/nord.nvim
 
