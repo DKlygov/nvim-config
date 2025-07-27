@@ -68,9 +68,6 @@ vim.keymap.set("n", "<leader>wk", "<C-w>l", { desc = "Navigate to top window" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })        
 vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })         
 
--- Terminal
-vim.keymap.set("n", "<leader>it", ":Term<CR>", { desc = "Open integrated terminal", silent = true })
-
 -- Tabs
 vim.opt.showtabline = 2 -- Always show tab line
 vim.opt.tabline = '' -- Disable custom tabline (default UI)
@@ -153,13 +150,6 @@ vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from definition (ct
 
 -- Auto commands group 
 local autoCommandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
-
--- Open integrated terminal below, with the size of 16 lines
-vim.api.nvim_create_user_command("Term",
-    function()
-        vim.cmd("botright 16split | terminal")
-    end,
-{ desc = "Open terminal below with 10 lines height" })
 
 -- Delete terminal buffers after they close
 vim.api.nvim_create_autocmd("TermClose", {
