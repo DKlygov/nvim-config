@@ -54,8 +54,8 @@ vim.opt.autowrite      = false -- Don’t auto-write files
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode with jk
 
 -- Buffers
-vim.keymap.set("n", "<leader>bc", ":vnew<CR>", { desc = "Create new empty buffer on the left" })
-vim.keymap.set("n", "<leader>bd", ":bdelete<CR>", { desc = "Delete current buffer" })              
+vim.keymap.set("n", "<leader>bo", ":vnew<CR>", { desc = "Open new empty buffer on the left" })
+vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { desc = "Close current buffer" })              
 vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })                          
 vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })                  
 
@@ -71,8 +71,8 @@ vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" 
 -- Tabs
 vim.opt.showtabline = 2 -- Always show tab line
 vim.opt.tabline = '' -- Disable custom tabline (default UI)
-vim.keymap.set("n", "<leader>tc", ":tabnew<CR>", { desc = "Create new tab" })         
-vim.keymap.set("n", "<leader>td", ":tabclose<CR>", { desc = "Delete current tab" })   
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })         
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })   
 vim.keymap.set('n', '<leader>tm', ':tabmove<CR>', { desc = 'Move tab' })              
 vim.keymap.set('n', '<leader>tl', ':tabmove +1<CR>', { desc = 'Move tab right' })     
 vim.keymap.set('n', '<leader>th', ':tabmove -1<CR>', { desc = 'Move tab left' })      
@@ -82,7 +82,7 @@ for i = 1, 9 do
 end
 
 -- Files
-vim.keymap.set("n", "<leader>e", ":Explore<CR>", { desc = "Open file explorer" })       
+vim.keymap.set("n", "<leader>eo", ":Explore<CR>", { desc = "Open file explorer" })       
 vim.keymap.set("n", "<leader>ff", ":find", { desc = "Find file" })                      
 
 -- Centered navigation 
@@ -92,7 +92,7 @@ vim.keymap.set("n", "<leader>pd", "<C-d>zz", { desc = "Half page down" })
 vim.keymap.set("n", "<leader>pu", "<C-u>zz", { desc = "Half page up" })       
 
 -- Config Shortcut
-vim.keymap.set("n", "<leader>cc", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config"} )  
+vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config"} )  
 
 -- CLI Completion
 vim.opt.wildmenu  = true -- Enable wildmenu for command-line completion
@@ -163,19 +163,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
         if vim.fn.isdirectory(dir) == 0 then
             vim.fn.mkdir(dir, "p")
         end
-    end,
-})
-
--- Automatically regenerate ctags on file save
-vim.api.nvim_create_autocmd("BufWritePost", {
-    group = autoCommandGroup,
-    callback = function(args)
-        local project_root = vim.fn.getcwd()
-        vim.fn.jobstart({ "ctags", "-f", ".tags" , "-R", "." }, {
-            cwd = project_root,
-            stdout_buffered = true,
-            stderr_buffered = true,
-        })
     end,
 })
 
