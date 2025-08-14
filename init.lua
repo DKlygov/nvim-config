@@ -133,21 +133,6 @@ vim.opt.timeoutlen     = 500 -- Mapped sequence timeout length
 vim.opt.ttimeoutlen    = 0 -- Timeout for key codes
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- Better completion menu
 
--- Make instant search of standart C library headers
--- so you can find: stdlib.h or any other library installed
-vim.opt.path:append("/usr/include") -- System headers on Linux
-vim.opt.path:append("/usr/local/include") -- Local headers
-vim.opt.path:append("/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include") -- macOS system headers
-vim.opt.path:append("/Library/Developer/CommandLineTools/usr/include") -- Additional macOS headers
-vim.opt.path:append("/usr/lib/gcc") -- GCC-specific headers
-vim.opt.path:append("/usr/lib/clang") -- Clang-specific headers
-
--- Ctags
-vim.opt.tags:append("./.tags;/") -- Load Ctags dir
-vim.keymap.set("n", "<leader>gd", "<C-]>", { desc = "Go to definition (ctags)" })
-vim.keymap.set("n", "<leader>gD", ":tselect <C-r><C-w><CR>", { desc = "Tag select (multiple matches)" })
-vim.keymap.set("n", "<leader>gb", "<C-T>", { desc = "Go back from definition (ctags)" })
-
 -- Auto commands group 
 local autoCommandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
 
