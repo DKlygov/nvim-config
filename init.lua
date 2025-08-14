@@ -25,7 +25,7 @@ vim.opt.number         = true -- Show line numbers
 vim.opt.relativenumber = true -- Show relative line numbers
 vim.opt.wrap           = true -- Enable line wrapping
 vim.opt.cursorline     = true -- Highlight current line
-vim.opt.fixendofline = true -- Automatically fix missing newline at end of file
+vim.opt.fixendofline   = true -- Automatically fix missing newline at end of file
 
 -- Indent
 vim.opt.expandtab      = true -- Use spaces instead of tabs
