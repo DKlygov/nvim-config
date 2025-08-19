@@ -166,3 +166,10 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end,
 })
 
+-- Auto-reload when switching back to a buffer or window
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+    group = autoCommandGroup,
+    pattern = "*",
+    command = "checktime"
+})
+
