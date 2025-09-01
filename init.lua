@@ -7,108 +7,108 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "None" }) -- Make Normal background tran
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "None" }) -- Make inactive Normal background transparent
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "None" }) -- Make EndOfBuffer background transparent
 
-vim.opt.termguicolors  = true -- Enable 24-bit RGB color
-vim.opt.signcolumn     = "yes" -- Always show sign column
-vim.opt.colorcolumn    = "80" -- Highlight column 80 (code style guide)
-vim.opt.showmatch      = true -- Highlight matching parens
-vim.opt.matchtime      = 2 -- Delay in 1/10 seconds for match highlighting
-vim.opt.cmdheight      = 1 -- Command line height
-vim.opt.showmode       = false -- Don’t show mode (like -- INSERT --)
-vim.opt.pumheight      = 10 -- Max items in popup menu
-vim.opt.pumblend       = 10 -- Transparency for popup menu
-vim.opt.winblend       = 0 -- Transparency for floating windows
-vim.opt.conceallevel   = 0 -- Show concealed text normally
-vim.opt.concealcursor  = "" -- Show all concealed text in all modes
-vim.opt.lazyredraw     = true -- Don’t redraw screen while executing macros
-vim.opt.synmaxcol      = 1000 -- Stop syntax highlighting after 1000 columns
-vim.opt.number         = true -- Show line numbers
+vim.opt.termguicolors = true -- Enable 24-bit RGB color
+vim.opt.signcolumn = "yes" -- Always show sign column
+vim.opt.colorcolumn = "80" -- Highlight column 80 (code style guide)
+vim.opt.showmatch = true -- Highlight matching parens
+vim.opt.matchtime = 2 -- Delay in 1/10 seconds for match highlighting
+vim.opt.cmdheight = 1 -- Command line height
+vim.opt.showmode = false -- Don’t show mode (like -- INSERT --)
+vim.opt.pumheight = 10 -- Max items in popup menu
+vim.opt.pumblend = 10 -- Transparency for popup menu
+vim.opt.winblend = 0 -- Transparency for floating windows
+vim.opt.conceallevel = 0 -- Show concealed text normally
+vim.opt.concealcursor = "" -- Show all concealed text in all modes
+vim.opt.lazyredraw = true -- Don’t redraw screen while executing macros
+vim.opt.synmaxcol = 1000 -- Stop syntax highlighting after 1000 columns
+vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Show relative line numbers
-vim.opt.wrap           = true -- Enable line wrapping
-vim.opt.cursorline     = true -- Highlight current line
-vim.opt.fixendofline   = true -- Automatically fix missing newline at end of file
+vim.opt.wrap = true -- Enable line wrapping
+vim.opt.cursorline = true -- Highlight current line
+vim.opt.fixendofline = true -- Automatically fix missing newline at end of file
 
 -- Indent
-vim.opt.expandtab      = true -- Use spaces instead of tabs
-vim.opt.tabstop        = 4 -- Number of spaces per tab
-vim.opt.shiftwidth     = 4 -- Number of spaces per indentation level
-vim.opt.softtabstop    = 4 -- Number of spaces for tab in insert mode
-vim.opt.smartindent    = true -- Auto indent new lines smartly
-vim.opt.autoindent     = true -- Copy indent from current line when starting a new one
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.tabstop = 4 -- Number of spaces per tab
+vim.opt.shiftwidth = 4 -- Number of spaces per indentation level
+vim.opt.softtabstop = 4 -- Number of spaces for tab in insert mode
+vim.opt.smartindent = true -- Auto indent new lines smartly
+vim.opt.autoindent = true -- Copy indent from current line when starting a new one
 
 -- Search
-vim.opt.hlsearch       = false -- Don’t highlight search matches
-vim.opt.incsearch      = true -- Show match while typing
-vim.opt.ignorecase     = true -- Ignore case in search
-vim.opt.smartcase      = true -- Override ignorecase if search has capital letters
+vim.opt.hlsearch = false -- Don’t highlight search matches
+vim.opt.incsearch = true -- Show match while typing
+vim.opt.ignorecase = true -- Ignore case in search
+vim.opt.smartcase = true -- Override ignorecase if search has capital letters
 
 -- Files
-vim.opt.backup         = false -- Disable backup files
-vim.opt.writebackup    = false -- Disable backup before writing file
-vim.opt.swapfile       = false -- Disable swap files
-vim.opt.undofile       = true -- Enable persistent undo
-vim.opt.undodir        = vim.fn.expand("~/.nvim/undodir") -- Directory to store undo files
-vim.opt.autoread       = true -- Auto reload file if changed outside
-vim.opt.autowrite      = false -- Don’t auto-write files
+vim.opt.backup = false -- Disable backup files
+vim.opt.writebackup = false -- Disable backup before writing file
+vim.opt.swapfile = false -- Disable swap files
+vim.opt.undofile = true -- Enable persistent undo
+vim.opt.undodir = vim.fn.expand("~/.nvim/undodir") -- Directory to store undo files
+vim.opt.autoread = true -- Auto reload file if changed outside
+vim.opt.autowrite = false -- Don’t auto-write files
 
--- Most important remap. Period. 
+-- Most important remap. Period.
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode with jk
 
 -- Buffers
 vim.keymap.set("n", "<leader>bo", ":vnew<CR>", { desc = "Open new empty buffer on the left" })
-vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { desc = "Close current buffer" })              
-vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })                          
-vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })                  
+vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- Windows
-vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })     
-vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })    
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Navigate to left window" })          
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Navigate to right window" })         
-vim.keymap.set("n", "<leader>wk", "<C-w>l", { desc = "Navigate to top window" })           
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })        
-vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })         
+vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Navigate to left window" })
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Navigate to right window" })
+vim.keymap.set("n", "<leader>wk", "<C-w>l", { desc = "Navigate to top window" })
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })
+vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })
 
 -- Tabs
 vim.opt.showtabline = 2 -- Always show tab line
-vim.opt.tabline = '' -- Disable custom tabline (default UI)
-vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })         
-vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })   
-vim.keymap.set('n', '<leader>tm', ':tabmove<CR>', { desc = 'Move tab' })              
-vim.keymap.set('n', '<leader>tl', ':tabmove +1<CR>', { desc = 'Move tab right' })     
-vim.keymap.set('n', '<leader>th', ':tabmove -1<CR>', { desc = 'Move tab left' })      
+vim.opt.tabline = "" -- Disable custom tabline (default UI)
+vim.keymap.set("n", "<leader>to", ":tabnew<CR>", { desc = "Open new tab" })
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
+vim.keymap.set("n", "<leader>tm", ":tabmove<CR>", { desc = "Move tab" })
+vim.keymap.set("n", "<leader>tl", ":tabmove +1<CR>", { desc = "Move tab right" })
+vim.keymap.set("n", "<leader>th", ":tabmove -1<CR>", { desc = "Move tab left" })
 
 for i = 1, 9 do
-    vim.keymap.set("n", "<leader>" .. i, ":tabn " .. i .. "<CR>", { desc = "Switch to tab " .. i }) 
+    vim.keymap.set("n", "<leader>" .. i, ":tabn " .. i .. "<CR>", { desc = "Switch to tab " .. i })
 end
 
 -- Files
-vim.keymap.set("n", "<leader>eo", ":Explore<CR>", { desc = "Open file explorer" })       
-vim.keymap.set("n", "<leader>ff", ":find", { desc = "Find file" })                      
+vim.keymap.set("n", "<leader>eo", ":Explore<CR>", { desc = "Open file explorer" })
+vim.keymap.set("n", "<leader>ff", ":find", { desc = "Find file" })
 
--- Centered navigation 
-vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result" })            
-vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result" })        
-vim.keymap.set("n", "<leader>pd", "<C-d>zz", { desc = "Half page down" })     
-vim.keymap.set("n", "<leader>pu", "<C-u>zz", { desc = "Half page up" })       
+-- Centered navigation
+vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result" })
+vim.keymap.set("n", "N", "Nzzzv", { desc = "Previous search result" })
+vim.keymap.set("n", "<leader>pd", "<C-d>zz", { desc = "Half page down" })
+vim.keymap.set("n", "<leader>pu", "<C-u>zz", { desc = "Half page up" })
 
 -- Config Shortcut
-vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config"} )  
+vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config" })
 
 -- CLI Completion
-vim.opt.wildmenu  = true -- Enable wildmenu for command-line completion
-vim.opt.wildmode  = "longest:full,full" -- Completion mode: longest common part first, then full
+vim.opt.wildmenu = true -- Enable wildmenu for command-line completion
+vim.opt.wildmode = "longest:full,full" -- Completion mode: longest common part first, then full
 vim.opt.wildignore:append({
-  "*.o", -- object files
-  "*.a", -- static libraries
-  "*.so", -- shared libraries
-  "*.out", -- output binaries
-  "*.dSYM/**", -- macOS debug symbols
-  "*/build/**", -- typical build folder
-  "*/bin/**", -- binaries
-  "*/obj/**", -- object files folder
-  "*.swp", -- Vim swap files
-  "*.tmp", -- temp files
-  "*.log", -- logs
+    "*.o", -- object files
+    "*.a", -- static libraries
+    "*.so", -- shared libraries
+    "*.out", -- output binaries
+    "*.dSYM/**", -- macOS debug symbols
+    "*/build/**", -- typical build folder
+    "*/bin/**", -- binaries
+    "*/obj/**", -- object files folder
+    "*.swp", -- Vim swap files
+    "*.tmp", -- temp files
+    "*.log", -- logs
 })
 
 -- Diff
@@ -128,23 +128,23 @@ vim.opt.modifiable = true -- Allow buffer modification
 vim.opt.encoding = "UTF-8" -- Set encoding to UTF-8
 vim.opt.redrawtime = 10000 -- Increase redraw time for large files
 vim.opt.maxmempattern = 20000 -- Increase memory for pattern matching
-vim.opt.updatetime     = 300 -- Delay before triggering CursorHold
-vim.opt.timeoutlen     = 500 -- Mapped sequence timeout length
-vim.opt.ttimeoutlen    = 0 -- Timeout for key codes
+vim.opt.updatetime = 300 -- Delay before triggering CursorHold
+vim.opt.timeoutlen = 500 -- Mapped sequence timeout length
+vim.opt.ttimeoutlen = 0 -- Timeout for key codes
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" } -- Better completion menu
 
--- Auto commands group 
+-- Auto commands group
 local autoCommandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
 
 -- Delete terminal buffers after they close
 vim.api.nvim_create_autocmd("TermClose", {
-  group = autoCommandGroup,
-  callback = function(args)
-    local bufnr = args.buf
-    if vim.api.nvim_buf_is_valid(bufnr) then
-      vim.api.nvim_buf_delete(bufnr, { force = true })
-    end
-  end,
+    group = autoCommandGroup,
+    callback = function(args)
+        local bufnr = args.buf
+        if vim.api.nvim_buf_is_valid(bufnr) then
+            vim.api.nvim_buf_delete(bufnr, { force = true })
+        end
+    end,
 })
 
 -- Resize
@@ -170,12 +170,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     group = autoCommandGroup,
     pattern = "*",
-    command = "checktime"
+    command = "checktime",
 })
 
-
 -- Force vim to treat .h files as C, not as C++
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
     group = autoCommandGroup,
     pattern = "*.h",
     callback = function()
@@ -189,5 +188,125 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "c",
     callback = function(args)
         vim.treesitter.start(args.buf, "c")
+    end,
+})
+
+local function setup_c_cpp_highlights()
+    -- Get Nord colors from the colorscheme
+    local nord_colors = require("nord.colors")
+    local nord_white = nord_colors.nord6_gui -- #ECEFF4
+    local nord_type_color = nord_colors.nord9_gui -- #81A1C1 (glacier - same as @type)
+    local nord_yellow = nord_colors.nord13_gui -- #EBCB8B (yellow for preprocessor constants)
+
+    -- C/C++ specific highlight overrides
+    local c_cpp_overrides = {
+        -- Remove all bold and italic formatting from keywords
+        ["@keyword.function"] = { bold = false, italic = false },
+        ["@keyword.return"] = { fg = nord_type_color, bold = false, italic = false },
+        ["@keyword.conditional"] = { bold = false, italic = false },
+        ["@keyword.repeat"] = { bold = false, italic = false },
+        ["@keyword.exception"] = { bold = false, italic = false },
+        ["@keyword.storage"] = { bold = false, italic = false },
+        ["@keyword.modifier"] = { bold = false, italic = false },
+        ["@keyword.operator"] = { bold = false, italic = false },
+        ["@keyword.import"] = { bold = false, italic = false },
+        ["@keyword.type"] = { bold = false, italic = false },
+        ["@keyword.directive"] = { bold = false, italic = false },
+        ["@keyword.directive.define"] = { bold = false, italic = false },
+
+        -- Preprocessor directives like #ifdef, #define, etc.
+        ["@conditional"] = { bold = false, italic = false },
+        ["@preproc.conditional"] = { bold = false, italic = false },
+        ["@preproc.define"] = { bold = false, italic = false },
+        ["@preproc.include"] = { bold = false, italic = false },
+
+        -- Preprocessor constants like __cplusplus, NGN_MODEL_LOADER_H, __linux__
+        ["@constant.macro"] = { fg = nord_yellow, bold = false, italic = false },
+        ["@constant.builtin"] = { fg = nord_yellow, bold = false, italic = false },
+        ["@define"] = { fg = nord_yellow, bold = false, italic = false },
+
+        -- Storage class keywords like typedef, struct, etc.
+        ["@storageclass.lifetime"] = { bold = false, italic = false },
+        ["@type.qualifier"] = { bold = false, italic = false },
+
+        -- Make switch, case, return same color as data types (nord9_gui)
+        ["@keyword.conditional.switch"] = { fg = nord_type_color, bold = false },
+        ["@keyword.conditional.case"] = { fg = nord_type_color, bold = false },
+        ["@keyword.return"] = { fg = nord_type_color, bold = false },
+
+        -- Struct field names (params) should be Nord white, not italic
+        ["@property"] = { fg = nord_white, italic = false },
+        ["@field"] = { fg = nord_white, italic = false },
+        ["@parameter"] = { fg = nord_white, italic = false },
+
+        -- Remove bold from types and other common highlights, and italic from everything except comments
+        ["@type"] = { bold = false, italic = false },
+        ["@type.builtin"] = { bold = false, italic = false },
+        ["@type.definition"] = { bold = false, italic = false },
+        ["@storageclass"] = { bold = false, italic = false },
+        ["@function"] = { bold = false, italic = false },
+        ["@function.builtin"] = { bold = false, italic = false },
+        ["@variable"] = { bold = false, italic = false },
+        ["@variable.builtin"] = { bold = false, italic = false },
+
+        -- Enum values and regular constants (like static const variables) - make them white
+        ["@constant"] = { fg = nord_white, bold = false, italic = false },
+        ["@variable.constant"] = { fg = nord_white, bold = false, italic = false },
+        ["@variable.readonly"] = { fg = nord_white, bold = false, italic = false },
+        ["@string"] = { bold = false, italic = false },
+        ["@number"] = { bold = false, italic = false },
+        ["@boolean"] = { bold = false, italic = false },
+        ["@operator"] = { bold = false, italic = false },
+        ["@punctuation"] = { bold = false, italic = false },
+        ["@comment"] = { bold = false, italic = true }, -- Keep italic for comments, only remove bold
+        ["@preproc"] = { bold = false, italic = false },
+        ["@include"] = { bold = false, italic = false },
+        ["@define"] = { bold = false, italic = false },
+        ["@macro"] = { bold = false, italic = false },
+        ["@label"] = { bold = false, italic = false },
+        ["@attribute"] = { bold = false, italic = false },
+        ["@namespace"] = { bold = false, italic = false },
+        ["@method"] = { bold = false, italic = false },
+        ["@constructor"] = { bold = false, italic = false },
+        ["@tag"] = { bold = false, italic = false },
+    }
+
+    -- Apply the overrides
+    for group, opts in pairs(c_cpp_overrides) do
+        local current = vim.api.nvim_get_hl_by_name(group, true)
+
+        local final_opts = {
+            fg = opts.fg or current.foreground,
+            bg = current.background,
+            bold = opts.bold,
+            italic = opts.italic,
+            underline = current.underline,
+            undercurl = current.undercurl,
+            reverse = current.reverse,
+            standout = current.standout,
+            strikethrough = current.strikethrough,
+            nocombine = current.nocombine,
+        }
+
+        vim.api.nvim_set_hl(0, group, final_opts)
+    end
+end
+
+-- Apply C/C++ highlights only for C and C++ files
+vim.api.nvim_create_autocmd("FileType", {
+    group = autoCommandGroup,
+    pattern = { "c", "cpp" },
+    callback = setup_c_cpp_highlights,
+})
+
+-- Also reapply after colorscheme changes, but only if we're in a C/C++ buffer
+vim.api.nvim_create_autocmd("ColorScheme", {
+    group = autoCommandGroup,
+    callback = function()
+        -- Check if current buffer is C or C++
+        local ft = vim.bo.filetype
+        if ft == "c" or ft == "cpp" then
+            setup_c_cpp_highlights()
+        end
     end,
 })
