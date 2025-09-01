@@ -94,6 +94,12 @@ vim.keymap.set("n", "<leader>pu", "<C-u>zz", { desc = "Half page up" })
 -- Config Shortcut
 vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config" })
 
+-- Debug highlight groups under cursor
+vim.keymap.set("n", "<leader>hi", function()
+    local result = vim.treesitter.get_captures_at_cursor(0)
+    print(vim.inspect(result))
+end, { desc = "Show highlight groups under cursor" })
+
 -- CLI Completion
 vim.opt.wildmenu = true -- Enable wildmenu for command-line completion
 vim.opt.wildmode = "longest:full,full" -- Completion mode: longest common part first, then full
@@ -214,6 +220,9 @@ local function setup_c_cpp_highlights()
         ["@keyword.directive"] = { bold = false, italic = false },
         ["@keyword.directive.define"] = { bold = false, italic = false },
 
+        -- Override the general @keyword group (catches default: and other keywords)
+        ["@keyword"] = { fg = nord_type_color, bold = false, italic = false },
+
         -- Preprocessor directives like #ifdef, #define, etc.
         ["@conditional"] = { bold = false, italic = false },
         ["@preproc.conditional"] = { bold = false, italic = false },
@@ -230,9 +239,9 @@ local function setup_c_cpp_highlights()
         ["@type.qualifier"] = { bold = false, italic = false },
 
         -- Make switch, case, return same color as data types (nord9_gui)
-        ["@keyword.conditional.switch"] = { fg = nord_type_color, bold = false },
-        ["@keyword.conditional.case"] = { fg = nord_type_color, bold = false },
-        ["@keyword.return"] = { fg = nord_type_color, bold = false },
+        ["@keyword.conditional.switch"] = { fg = nord_type_color, bold = false, italic = false },
+        ["@keyword.conditional.case"] = { fg = nord_type_color, bold = false, italic = false },
+        ["@keyword.return"] = { fg = nord_type_color, bold = false, italic = false },
 
         -- Struct field names (params) should be Nord white, not italic
         ["@property"] = { fg = nord_white, italic = false },
