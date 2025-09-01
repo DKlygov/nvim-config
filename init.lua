@@ -173,3 +173,21 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     command = "checktime"
 })
 
+
+-- Force vim to treat .h files as C, not as C++
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+    group = autoCommandGroup,
+    pattern = "*.h",
+    callback = function()
+        vim.bo.filetype = "c"
+    end,
+})
+
+-- Run treesitter on c files (inluding headers)
+vim.api.nvim_create_autocmd("FileType", {
+    group = autoCommandGroup,
+    pattern = "c",
+    callback = function(args)
+        vim.treesitter.start(args.buf, "c")
+    end,
+})
