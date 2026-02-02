@@ -64,7 +64,7 @@ vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertical
 vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Navigate to left window" })
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Navigate to right window" })
-vim.keymap.set("n", "<leader>wk", "<C-w>l", { desc = "Navigate to top window" })
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Navigate to top window" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })
 vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })
 
