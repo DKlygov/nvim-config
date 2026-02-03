@@ -68,6 +68,11 @@ vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Navigate to right window" 
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Navigate to top window" })
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Navigate to bottom window" })
 vim.keymap.set("n", "<leader>wc", ":close<CR>", { desc = "Close current window" })
+vim.keymap.set("n", "<leader>w=", "<C-w>=", { desc = "Equalize window sizes" })
+vim.keymap.set("n", "<leader>wrn", function() vim.cmd("vertical resize -" .. vim.v.count1) end, { desc = "Resize window narrower" })
+vim.keymap.set("n", "<leader>wrw", function() vim.cmd("vertical resize +" .. vim.v.count1) end, { desc = "Resize window wider" })
+vim.keymap.set("n", "<leader>wrk", function() vim.cmd("resize +" .. vim.v.count1) end, { desc = "Resize window taller" })
+vim.keymap.set("n", "<leader>wrj", function() vim.cmd("resize -" .. vim.v.count1) end, { desc = "Resize window shorter" })
 
 -- Tabs
 vim.opt.showtabline = 2 -- Always show tab line
