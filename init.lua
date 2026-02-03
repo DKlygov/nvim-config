@@ -2,7 +2,7 @@ vim.g.mapleader = " " -- Set global leader key to space
 vim.g.maplocalleader = " " -- Set local leader key to space
 
 -- Visuals
-vim.cmd.colorscheme("default") -- Set colorscheme to 'nord'
+vim.cmd.colorscheme("default") -- Set colorscheme to 'default'
 vim.api.nvim_set_hl(0, "Normal", { bg = "None" }) -- Make Normal background transparent
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "None" }) -- Make inactive Normal background transparent
 vim.api.nvim_set_hl(0, "EndOfBuffer", { bg = "None" }) -- Make EndOfBuffer background transparent
@@ -56,12 +56,12 @@ vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode wit
 -- Buffers
 vim.keymap.set("n", "<leader>bo", ":vnew<CR>", { desc = "Open new empty buffer on the left" })
 vim.keymap.set("n", "<leader>bc", ":bdelete<CR>", { desc = "Close current buffer" })
-vim.keymap.set("n", "<leader>bl", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bh", ":bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Buffer next" })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Buffer previous" })
 
 -- Windows
-vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+vim.keymap.set("n", "<leader>wv", ":vsplit<CR>", { desc = "Window split vertical" })
+vim.keymap.set("n", "<leader>ws", ":split<CR>", { desc = "Window split horizontal" })
 vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Navigate to left window" })
 vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Navigate to right window" })
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Navigate to top window" })
