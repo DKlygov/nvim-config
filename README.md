@@ -29,7 +29,7 @@ And no, this is not about the Neovim hype. If anything, this configuration is
 the opposite of what the hype brought. I'm not here to show you a fancy dashboard,
 a pile of plugins with beautiful UI, or a "look at my terminal" screenshot.
 It's also *not* about productivity through keyboard-only workflows. That whole
-narrative is a lie. You're not suddenly 10x faster because you don't touch a
+narrative is a lie.  not suddenly 10x faster because you don't touch a
 mouse. And ricing your terminal to post it on Reddit is lame.
 
 I've used VSCode with the vim plugin for years. I already knew the keybindings,
@@ -58,7 +58,7 @@ with zero configuration. That would be masochism. What I'm saying is that you
 don't need a ton of plugins (if any) to have a productive environment.
 A few sensible options and some keybindings get the job done.
 
-## Where this approach shines
+## Where this approach shines...
 
 I work on multiple machines. Not just a corporate laptop and a personal one, but
 also corporate VMs, personal VMs, remote servers I need to SSH into. I work in
@@ -79,6 +79,33 @@ container or a locked-down corporate VM where you can't install anything.
 With this config, I just clone or copy, hell, even rewrite it, and I'm ready to work.
 Same keybindings, same behavior, everywhere. That's the real productivity gain.
 
+## ... and where it doesn't
+
+I would lie to you if I didn't mention a bunch of exceptions where this
+simplistic approach just doesn't cut it. It might not work for you if:
+
+- You are working on giant codebases (more than 1 mil LoC easily). Those
+codebases tend to contain lots of local libraries, they change daily,
+and they might even have convenient editor configurations (C++, Java, C#).
+At that scale, you genuinely need powerful navigation, refactoring tools,
+and deep language integration. Jumping between hundreds of files without
+proper tooling is a nightmare. Keeping track of the context is literally impossible.
+If your company already invested in setting up IDE configurations for a massive monorepo, use them.
+
+- You are not quite familiar with the tech stack  working on. When
+ learning something new, autocomplete, inline documentation, and
+error highlighting are actually useful. They help you discover APIs and
+catch mistakes early. Once  proficient, you won't need them as much.
+But while learning? A more capable editor can save you hours of digging
+through docs. Time is money: whatever makes you productive is the best choice.
+
+- You are really limited by compliance: you must use what you've been given.
+Some companies mandate specific tools. Some environments don't let you
+install anything. If that's your situation, there's no point fighting it.
+Work with what you have.
+
+In those cases it's better to stick to what you have and what works best.  
+
 ## Tools over plugins
 
 Ask yourself a real question: do you really need to do it *inside* your editor,
@@ -86,13 +113,13 @@ or could it be done with a dedicated tool? Let me give you some examples:
 
 - Syntax check is covered by compilers or separate analyzers/language servers
 - Need to manage k8s deployments? k9s is a perfect tool for this
-- Most linters come as separate programs. In decent codebases, they're already
+- Most linters come as separate programs. In decent codebases, they are already
 pre-configured to run during builds and commits/pushes
 - File managers: tons of them
 - Git: tons of tools for this (including git itself)
 
 The thing is, dedicated tools are almost always better than editor plugins that
-try to do the same thing. They're maintained by people who actually care about
+try to do the same thing. They are maintained by people who actually care about
 that specific problem. They have their own keybindings, their own workflows,
 their own ecosystems. And they don't break when you update *your editor*.
 
@@ -118,12 +145,12 @@ AI, obviously. Let's be real, *especially* for professional work, AI covers
 most of project scaffolding and common task implementations. And in those
 cases which require manual intervention and writing/rewriting code, all those
 analyzers, refactoring tools, completion plugins, etc. are of no use. *Especially*
-if you know what you're doing. If you're already proficient with the tech you're
+if you know what  doing. If you are already proficient with the tech you're
 using, all those bells and whistles are complementary at best, not something you
 really need to rely on anymore.
 
 Think about it. When was the last time autocomplete actually saved you significant
-time? Most of the time you're either writing something so simple that typing it
+time? Most of the time  either writing something so simple that typing it
 is faster than waiting for suggestions, or something so specific that no amount
 of static analysis will help you.
 
@@ -144,8 +171,8 @@ It's simpler than that. An editor edits text. Tools do their job. That's it.
 
 Project scaffolding, code generation, file management, version control,
 linting, databases, deployments. There are dedicated tools for all of this.
-They're better at it than any plugin will ever be. So let them do it.
+They are better at it than any plugin will ever be. So let them do it.
 
-Just edit text, and get good at the tools you're working with.
+Just edit text, and get good at the tools  working with.
 Let everything else be what it's supposed to be.
 
