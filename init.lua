@@ -52,6 +52,7 @@ vim.opt.autowrite = false -- Don’t auto-write files
 
 -- Most important remap. Period.
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true }) -- Escape insert mode with jk
+vim.keymap.set("t", "jk", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Buffers
 vim.keymap.set("n", "<leader>bo", ":vnew<CR>", { desc = "Open new empty buffer on the left" })
@@ -92,13 +93,7 @@ vim.keymap.set("n", "<leader>pd", "<C-d>zz", { desc = "Half page down" })
 vim.keymap.set("n", "<leader>pu", "<C-u>zz", { desc = "Half page up" })
 
 -- Config Shortcut
-vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Change config" })
-
--- Debug highlight groups under cursor
-vim.keymap.set("n", "<leader>hi", function()
-    local result = vim.treesitter.get_captures_at_cursor(0)
-    print(vim.inspect(result))
-end, { desc = "Show highlight groups under cursor" })
+vim.keymap.set("n", "<leader>cfg", ":e ~/.config/nvim/init.lua<CR>", { desc = "Open config file" })
 
 -- CLI Completion
 vim.opt.wildmenu = true -- Enable wildmenu for command-line completion
