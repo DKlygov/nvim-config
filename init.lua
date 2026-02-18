@@ -199,7 +199,15 @@ vim.opt.ttimeoutlen = 0
 vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
 
 -- Auto commands group
-local autoCommandGroup = vim.api.nvim_create_augroup("CustomConfig", {})
+local autoCommandGroup = vim.api.nvim_create_augroup("CustomCommandsGroup", {})
+
+-- Start treesitter highlighting for a buffer
+vim.api.nvim_create_autocmd("FileType", {
+    group = autoCommandGroup,
+    callback = function(args)
+        pcall(vim.treesitter.start, args.buf)
+    end,
+})
 
 -- Delete terminal buffers after they close
 vim.api.nvim_create_autocmd("TermClose", {
