@@ -243,3 +243,10 @@ vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
     group = autoCommandGroup,
     command = "checktime",
 })
+
+-- Treat .h files as C
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+    group = autoCommandGroup,
+    pattern = "*.h",
+    command = "set filetype=c",
+})
